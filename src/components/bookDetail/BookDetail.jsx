@@ -9,15 +9,21 @@ const BookDetail = () => {
     const data = useLoaderData();
 
     const book = data.find(book => book.bookId === id);
+
     const { bookId: currentBookId, image, author,
         bookName, tags, category, publisher, rating,
         totalPages, review } = book;
 
+
+    const handleMarkAsRead = () => {
+
+    }
+
     return (
-        <div className="grid md:grid-cols-2">
-            <div>
+        <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-gray-100 rounded-lg mt-6 mb-6">
                 <img
-                    className="w-72 ml-20 mt-6 mb-6"
+                    className="w-72 ml-36 mt-6 mb-6"
                     src={image} alt="" />
             </div>
             <div className="mt-4">
@@ -33,7 +39,7 @@ const BookDetail = () => {
                     <span className="text-xs">{review}</span>
                 </p>
                 <div className="border mb-5 mt-5"></div>
-                <div className="flex gap-2 mt-6">
+                <div className="flex gap-2 mt-6 mb-2">
                     <h2 className="font-bold">Tags:</h2>
                     {
                         tags.map((tag, inbox) => <button
@@ -43,6 +49,18 @@ const BookDetail = () => {
                             {tag}
                         </button>)
                     }
+                </div>
+                <div>
+                    <button
+                        onClick={handleMarkAsRead}
+                        className="hover:bg-green-100 rounded-lg border pt-1 
+                    pb-1 text-sm pl-4 pr-4 mb-4 mt-4">
+                        Marks as Read</button>
+                    <button
+
+                        className="hover:bg-green-100 hover:text-black ml-2 bg-green-700 text-white rounded-lg border pt-1 
+                    pb-1 pl-4 pr-4 mb-4 mt-4 text-sm">
+                        Add to Wish List</button>
                 </div>
             </div>
         </div>
